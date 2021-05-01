@@ -2,9 +2,9 @@
 ```
 ./setup.sh
 ```
-
-<summary>第二种方法</summary>
 <details>
+<summary>第二种方法</summary>
+
 手动输入
 <pre>
 cp /proc/asound/card0/codec* .
