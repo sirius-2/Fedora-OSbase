@@ -38,12 +38,12 @@ fi
 ## cp files & zip
 cp -f $tmp_dir/tables/DSDT.dsl $tmp_dir
 zip -q -r ../OpenCoreBase.zip ./* -x=./verbit.sh
-#sudo rm -rf $tmp_dir
+sudo rm -rf $tmp_dir
 cd ..
 ### Handle End
 
 ## More FakeEC
-#clear
+clear
 cat<<EOF
 [ - ] More eg.: FakeEC
                   https://github.com/corpnewt/SSDTTime
