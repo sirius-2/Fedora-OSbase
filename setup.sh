@@ -5,8 +5,9 @@ result_dir='./Result'
 tmp_dir='./tmp'
 dsdt_ori='/sys/firmware/acpi/tables/DSDT'
 
-## chmod
+## chmod && makedir
 sudo chmod -R 777 .
+mkdir $result_dir $tmp_dir
 
 ## Get DSDT.dsl
 if [[ -f $dsdt_ori ]];then
