@@ -11,9 +11,9 @@ sudo chmod -R 777 .
 
 ## Get DSDT.dsl
 if [[ -f $dsdt_ori ]];then
-	cat $dsdt_ori > $result_dir/DSDT.dat
-	cp -f iasl-prebuilt/linux/iasl iasl && sudo chmod +x iasl
-	iasl -d $result_dir/DSDT.dat
+	sudo cat $dsdt_ori > $result_dir/DSDT.dat
+	cp -f iasl-prebuilt/linux/iasl iasl && sudo chmod +x ./iasl
+	./iasl -d $result_dir/DSDT.dat
 else
 	echo '[ x ] No DSDT found'
 fi
@@ -24,14 +24,12 @@ lspci > $result_dir/lspci.txt
 ## Get Codec#0 for ApppleALC
 cp /proc/asound/card0/codec* $tmp_dir
 sudo cp -R /sys/firmware/acpi/tables $tmp_dir
-cd $tmp_dir
-if [[ -f 'codec#0' ]];then
+if [[ -f '$tmp_dir/codec#0' ]];then
 	sudo chmod a+x verbit.sh
-	./verbit.sh 'codec#0' > ALC_dump.txt
+	./verbit.sh '$tmp_dir/codec#0' > $tmp_dir/ALC_dump.txt
 else
 	echo '[ x ] No codec#0 found'
 fi
-cd ..
 
 ## cp files & zip
 cp -f 'codec#0' $result_dir
