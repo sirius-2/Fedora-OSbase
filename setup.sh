@@ -11,7 +11,7 @@ sudo chmod -R 777 .
 ## Get DSDT.dsl
 if [[ -f $dsdt_ori ]];then
 	cat $dsdt_ori > $result_dir/DSDT.dat
-	cp -f iasl-prebuilt/linux/iasl iasl
+	cp -f iasl-prebuilt/linux/iasl iasl && sudo chmod +x iasl
 	iasl -d $result_dir/DSDT.dat
 else
 	echo '[ x ] No DSDT found'
